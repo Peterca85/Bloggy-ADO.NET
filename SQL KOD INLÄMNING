@@ -1,0 +1,64 @@
+SQL KOD INLÄMNING
+
+
+--skapar databasen Bloggy
+CREATE DATABASE Bloggy;
+
+--Använder databasen Bloggy
+USE Bloggy;
+
+--skapar  en tabell för Category
+
+CREATE TABLE Category (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    category VARCHAR(255) NOT NULL,
+  );
+
+  --skapar en tabell för Blog:posts
+
+    CREATE TABLE Blog_Posts (
+    id INT IDENTITY(1,1) PRIMARY KEY ,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+ );
+
+--sätter i värden i tabellerna
+
+Insert into Category
+
+Values (1,’Sport’);
+
+Insert into Category
+
+Values (2,’Musik’);
+
+Insert into Category
+
+Values (3,'Resa');
+
+Insert into Blog_Posts
+
+Values (1,'Fotboll','Världens största sport är fotboll.');
+
+Insert into Blog_Posts
+
+Values (2,'Hip Hop','Hip Hop kallas även för Rap. Musikstilen grundades i New York på 1970-talet');
+
+
+Insert into Blog_Posts
+
+Values (3,'Europa med tåg','Att upptäcka Europa med tåg är både ett miljövänligare och roligare sätt att resa på.');
+
+Insert into Blog_Posts
+
+Values (4,'Åka genom Usa','Att bila genom Usa från kust till har alltid varit en stor dröm för mig .’);
+
+--skapar tabellen Blog_Category
+
+CREATE TABLE Blog_Category (
+    id INT  PRIMARY KEY,
+    category_id INT NOT NULL,
+     FOREIGN KEY (category_id) REFERENCES Category(id),
+    blog_post_id INT NOT NULL,
+     FOREIGN KEY (blog_post_id) REFERENCES Blog_Posts(id)
+);
